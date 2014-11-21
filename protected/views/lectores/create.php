@@ -4,15 +4,15 @@
 
 $this->breadcrumbs=array(
 	'Lectores'=>array('index'),
-	'Create',
+	'Crear',
 );
 
 $this->menu=array(
-	array('label'=>'List Lectores', 'url'=>array('index')),
-	array('label'=>'Manage Lectores', 'url'=>array('admin')),
+	array('label'=>'Listar Lectores', 'url'=>array('index')),
+	array('label'=>'Manejar Lectores', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Lectores</h1>
+<h1>Crear Lectores</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

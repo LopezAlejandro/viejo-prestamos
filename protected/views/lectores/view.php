@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Lectores', 'url'=>array('index')),
-	array('label'=>'Create Lectores', 'url'=>array('create')),
-	array('label'=>'Update Lectores', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Lectores', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Lectores', 'url'=>array('admin')),
+	array('label'=>'Listar Lectores', 'url'=>array('index')),
+	array('label'=>'Crear Lectores', 'url'=>array('create')),
+	array('label'=>'Modificar Lectores', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Borrar Lectores', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manejar Lectores', 'url'=>array('admin')),
 );
 ?>
 
@@ -24,7 +24,16 @@ $this->menu=array(
 		'id',
 		'nombre',
 		'documento',
-		'clase_lector_id',
-		'clase_documento_id',
+		array(
+		'name'=>'clase_lector_id',
+		'value'=>$model->claseLector->descripcion,
+		'header'=>'Tipo Lector',
+		),
+		array(
+		'name'=>'clase_documento_id',
+		'value'=>$model->claseDocumento->descripcion_documento,
+		'header'=>'Tipo Documento',
+		),
+		
 	),
 )); ?>

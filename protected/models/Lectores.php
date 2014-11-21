@@ -18,7 +18,6 @@
  */
 class Lectores extends CActiveRecord
 {
-	public $mi_campo;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,7 +34,8 @@ class Lectores extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, documento, clase_lector_id, clase_documento_id', 'required'),
+			array('nombre, documento, clase_lector_id, clase_documento_id', 'required','message'=>'Sr. Usuario el {attribute} debe ingresarlo'),
+			array('documento','unique','attributeName'=>'documento','className'=>'Lectores'),
 			array('clase_lector_id, clase_documento_id', 'numerical', 'integerOnly'=>true),
 			array('nombre, documento', 'length', 'max'=>45),
 			// The following rule is used by search().

@@ -65,7 +65,7 @@ class LectoresController extends Controller
 		$model=new Lectores;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Lectores']))
 		{
@@ -89,7 +89,7 @@ class LectoresController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Lectores']))
 		{

@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Lectores', 'url'=>array('index')),
-	array('label'=>'Create Lectores', 'url'=>array('create')),
-	array('label'=>'View Lectores', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Lectores', 'url'=>array('admin')),
+	array('label'=>'Listar Lectores', 'url'=>array('index')),
+	array('label'=>'Crear Lectores', 'url'=>array('create')),
+	array('label'=>'Ver Lectores', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Manejar Lectores', 'url'=>array('admin')),
 );
 ?>
 

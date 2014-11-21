@@ -8,7 +8,10 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Prestamos Biblioteca FADU - UBA',
-
+         'language'=>'es',
+         'sourceLanguage'=>'en',
+         'charset'=>'utf-8',
+         
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -61,6 +64,10 @@ return array(
 			'password' => 'r31n4d0',
 			'charset' => 'utf8',
 		),
+		
+		'coreMessages'=>array(
+        	    'basePath'=>'protected/messages'
+    		),
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

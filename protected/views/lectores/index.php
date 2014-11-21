@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Lectores', 'url'=>array('create')),
-	array('label'=>'Manage Lectores', 'url'=>array('admin')),
+	array('label'=>'Crear Lectores', 'url'=>array('create')),
+	array('label'=>'Administrar Lectores', 'url'=>array('admin')),
 );
 ?>
 

@@ -4,12 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Lectores'=>array('index'),
-	'Manage',
+	'Administrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Lectores', 'url'=>array('index')),
-	array('label'=>'Create Lectores', 'url'=>array('create')),
+	array('label'=>'Listar Lectores', 'url'=>array('index')),
+	array('label'=>'Crear Lectores', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,11 +26,11 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Lectores</h1>
+<h1>Administrar Lectores</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+<p>Opcionalmente, puede introducir un operador de comparaci&oacute;n (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, 
+<b>&gt;=</b>, <b>&lt;&gt;</b> o <b>=</b> ) al principio de cada uno de los valores de b&uacute;squeda para 
+especificar c&oacute;mo se debe hacer la comparaci&oacute;n .
 </p>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
@@ -41,34 +41,47 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php 
-$mensaje="Hola jej jee";
-$this->widget ('ext.alert.GAlert',array('mensaje'=>$mensaje));
-
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'lectores-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'nombre',
-		'documento',
 		array(
-		'name'=>'mi_campo',
-		'value'=>'$data->nombre." ".$data->documento',
-		'type'=>'raw'
-		),
-		array(
-		'name'=>'clase_lector_id',
-		'header'=>'Tipo Lector',
-		'filter'=>CHtml::listdata(ClaseLector::model()->findAll(),'id','descripcion'),
+		'name'=>'nombre',
+		'value'=>'$data->nombre',
+		'header'=>'Nombre y Apellido',
 		),
 		array(
 		'name'=>'clase_documento_id',
-		'header'=>'Tipo documento',
-		'filter'=>CHtml::listdata(ClaseDocumento::model()->findAll(),'id','descripcion_documento'),
+		'value'=>'$data->claseDocumento->descripcion_documento',
+		'header'=>'Tipo Documento',
+		'filter'=>CHtml::activeDropDownList(
+            $model,
+            "clase_documento_id",
+            CHtml::listData(ClaseDocumento::model()->findAll(), 'id', 'descripcion_documento'),
+            array(
+                'empty'=>'Elija uno',
+            )),
+		
+		),
+		'documento',
+		array(
+		'name'=>'clase_lector_id',
+		'value'=>'$data->claseLector->descripcion',
+		'header'=>'Tipo Lector',
+		'filter'=>CHtml::activeDropDownList(
+            $model,
+            "clase_lector_id",
+            CHtml::listData(ClaseLector::model()->findAll(), 'id', 'descripcion'),
+            array(
+                'empty'=>'Elija uno',
+            )),
+		
 		),
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>'Acciones',
 		),
 	),
-)); ?>
+));
+?>
