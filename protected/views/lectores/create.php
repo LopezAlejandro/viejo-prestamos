@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Listar Lectores', 'url'=>array('index')),
-	array('label'=>'Manejar Lectores', 'url'=>array('admin')),
+	array('label'=>'Administrar Lectores', 'url'=>array('admin')),
 );
 ?>
 

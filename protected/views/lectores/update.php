@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Listar Lectores', 'url'=>array('index')),
 	array('label'=>'Crear Lectores', 'url'=>array('create')),
 	array('label'=>'Ver Lectores', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manejar Lectores', 'url'=>array('admin')),
+	array('label'=>'Administrar Lectores', 'url'=>array('admin')),
 );
 ?>
 

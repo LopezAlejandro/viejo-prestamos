@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Crear Lectores', 'url'=>array('create')),
 	array('label'=>'Modificar Lectores', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Borrar Lectores', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manejar Lectores', 'url'=>array('admin')),
+	array('label'=>'Administrar Lectores', 'url'=>array('admin')),
 );
 ?>
 
