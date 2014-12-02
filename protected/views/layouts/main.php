@@ -11,7 +11,7 @@
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
-
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/mbmenu.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
@@ -33,11 +33,11 @@
 				array('label'=>'Lectores', 'url'=>array('/lectores/index'),
 				    'items'=>array(
 					array('label'=>'Alta de Lectores','url'=>array('/lectores/create')),
-					array('label'=>'Baja de Lectores'),
-					array('label'=>'Modificacion de Lectores'),
+					array('label'=>'Administración de Lectores','url'=>array('/lectores/admin')),
 				    ),
 				),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+				array('label'=>'Autores', 'url'=>array('/autor/index')),
+				array('label'=>'Libros', 'url'=>array('/libros/index')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

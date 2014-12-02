@@ -78,10 +78,27 @@ $this->widget('zii.widgets.grid.CGridView', array(
             )),
 		
 		),
+		
+		
+		//array(
+		//	'class'=>'CButtonColumn',
+		//	'header'=>'Acciones',
+		//),
+		
 		array(
-			'class'=>'CButtonColumn',
-			'header'=>'Acciones',
-		),
-	),
+            'class'=>'CButtonColumn',
+                    'template' => '{view} {update} {delete} {pdf}',
+                'header'=>'Acciones', 
+                'buttons'=>array(
+                        'pdf' => array(
+                                'label'=>'Generar PDF', 
+                                'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->id))",
+                                'imageUrl'=>Yii::app()->request->baseUrl.'/images/pdf.png', 
+                                'options' => array('class'=>'pdf'),
+                        ),
+                ),
+        ),
+    ),    
+	
 ));
 ?>

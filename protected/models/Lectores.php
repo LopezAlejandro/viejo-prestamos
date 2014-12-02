@@ -102,6 +102,14 @@ class Lectores extends CActiveRecord
 		));
 	}
 
+	public function behaviors() {
+		return array('TimestampBehavior' => array(
+		'class' => 'application.models.behaviors.TimestampBehavior', )
+  );
+}
+
+
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
