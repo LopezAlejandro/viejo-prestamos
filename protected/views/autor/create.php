@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Autors'=>array('index'),
-	'Create',
+	'Nuevo',
 );
 
 $this->menu=array(

@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos marcados con <span class="required">*</span> son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -26,17 +26,27 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'autor'); ?>
-                <?php 
-		    $selected_autors = array(); 
-		    foreach($model->autors as $autors) array_push($selected_autors, $autors->id);
-		?>
+		<?php echo $form->labelEx($model,'autor'); ?>	
 		<div class="portlet-content">
-		    <?php echo CHtml::checkBoxList('Autores', $selected_autors, CHtml::listData(Autor::model()->findAll(),'id','nombre'),array('template'=>'{input} {label}','labelOptions'=>array('style'=>'display:inline;'))); ?>
-		    <?php echo $form->error($model,'autors'); ?>
-        	</div>
-	</div>
-	
+		
+		<?php
+			$this->widget(
+				'ext.emultiselect.EMultiSelect',
+				array('sortable'=>false, 'searchable'=>true)
+      
+			);
+		
+			$data=CHtml::listData(Autor::model()->findAll(),'id','nombre');	
+			echo $form->dropDownList(
+					$model,
+					'autors',
+					$data,
+					array('multiple'=>'multiple','key'=>'id', 'class'=>'multiselect')
+			);
+		?>
+		</div>
+	</div>	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'editorial'); ?>
 		<?php echo $form->textField($model,'editorial',array('size'=>45,'maxlength'=>45)); ?>
@@ -61,4 +71,5 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>
+<!-- form -->

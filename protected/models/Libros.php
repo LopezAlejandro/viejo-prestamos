@@ -89,6 +89,9 @@ class Libros extends CActiveRecord
 			'tipo_libro_id' => 'Tipo Libro',
 		);
 	}
+	
+	
+	
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -120,12 +123,17 @@ class Libros extends CActiveRecord
 	}
 
 
-    public function addBook() 
-		{
-    	    $this->addRelatedRecord('Autor',new libros,true);
-    	}
+    
+	public function addAutor() {
+		$this->addRelatedRecord('autors',new Autor,true);
+		
+	}
 
-
+	public function deleteAutor($idx) {
+		$autorArray = $this->autors;
+		unset($autorArray[$idx]);
+		$this->autors = $autorArray;
+	}
 
 
 	/**

@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos marcados con <span class="required">*</span> son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -33,7 +33,33 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nacimiento'); ?>
-		<?php echo $form->textField($model,'nacimiento'); ?>
+		<?php
+			$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+				'model'=>$model,
+				'attribute'=>'nacimiento',
+				'value'=>$model->nacimiento,
+				'language' => 'es',
+				'htmlOptions' => array('readonly'=>"readonly"),
+				'options'=>array(
+					'autoSize'=>true,
+					'defaultDate'=>$model->nacimiento,
+					'dateFormat'=>'yy-mm-dd',
+					'buttonImage'=>Yii::app()->baseUrl.'/images/Calendar.png',
+					'buttonImageOnly'=>true,
+					'buttonText'=>'Fecha',
+					'selectOtherMonths'=>true,
+					'showAnim'=>'slide',
+					'showButtonPanel'=>true,
+					'showOn'=>'button', 
+					'showOtherMonths'=>true, 
+					'changeMonth' => 'true', 
+					'changeYear' => 'true',
+					'yearRange'=>'1000:3000',
+					'minDate'=>'1000-01-01',
+					'maxDate'=>'date("Y-m-d")',
+				),
+			)); 
+		?>
 		<?php echo $form->error($model,'nacimiento'); ?>
 	</div>
 

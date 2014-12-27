@@ -37,7 +37,12 @@
 				    ),
 				),
 				array('label'=>'Autores', 'url'=>array('/autor/index')),
-				array('label'=>'Libros', 'url'=>array('/libros/index')),
+				
+				array('label'=>'Libros', 'url'=>array('/libros/index'),
+					'items'=>array(
+						array('label'=>'Copias','url'=>array('/copias')),
+					),		
+				),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
@@ -55,7 +60,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by Alejandro Lopez.<br/>
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->

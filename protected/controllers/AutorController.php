@@ -28,7 +28,7 @@ class AutorController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','autorLookup'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -141,6 +141,22 @@ class AutorController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+
+	public function actionAutorLookup() {
+		if(Yii::app()->request->isAjaxRequest && isset($_GET['q'])) {
+			$searched = $_GET['q'];
+			$criteria = new CDbCriteria;
+			$criteria->condition = "nombre LIKE :searched";
+			$criteria->params = array(":searched"=>"%$searched%");
+			$autorsArray = Autor::model()->findAll($criteria);
+			$returnVal = '';
+			foreach($autorsArray as $autor) {
+				$returnVal .= $autor->nombre.'|'.$autor->nombre."\n";
+			}
+			echo $returnVal;
+		}
 	}
 
 	/**

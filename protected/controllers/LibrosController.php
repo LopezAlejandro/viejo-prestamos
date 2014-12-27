@@ -72,12 +72,20 @@ class LibrosController extends Controller
 		if(isset($_POST['Libros']))
 		
 		{
-			// print_r($_POST);
+			//print_r($_POST);
 			$model->attributes=$_POST['Libros'];
-			
 			$model->setRelationRecords('autors',is_array(@$_POST['Autores']) ? $_POST['Autores'] : array());
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->setRelationRecords('autors',is_array(@$_POST['Libros']['autors']) ? $_POST['Libros']['autors'] : array());
+			
+			if(isset($_POST['addautor'])) $model->addAutor();
+			if(isset($_POST['deleteautor'])) $model->deleteAutor($_POST['idx']);
+			if(!isset($_POST['addautor']) && !isset($_POST['deleteautor'])) 
+			{
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
+			
+			
 		}
 
 		$this->render('create',array(
@@ -100,11 +108,20 @@ class LibrosController extends Controller
 
 		if(isset($_POST['Libros']))
 		{
+			
+			
 			$model->attributes=$_POST['Libros'];
 			$model->setRelationRecords('autors',is_array(@$_POST['Autores']) ? $_POST['Autores'] : array());
+			$model->setRelationRecords('autors',is_array(@$_POST['Libros']['autors']) ? $_POST['Libros']['autors'] : array());
 			
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+						
+			if(isset($_POST['addautor'])) $model->addAutor();
+			if(isset($_POST['deleteautor'])) $model->deleteAutor($_POST['idx']);
+			if(!isset($_POST['addautor']) && !isset($_POST['deleteautor'])) 
+			{
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
@@ -119,13 +136,23 @@ class LibrosController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		//$this->loadModel($id)->delete();
+		$c=$this->loadModel($id);
+		$numRefs = Copias::model()->count('libros_id=:librosid',array(':librosid'=>$c->id));
+		if($numRefs==0)
+			{
+				$c->delete();
+			} else
+			{
+				throw new CHttpException(400,'Existen copias de este libro. No puede ser borrado.');
+			}	
+		
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-
+	
+	
 	/**
 	 * Lists all models.
 	 */
