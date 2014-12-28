@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-	'Copiases',
+	'Copias',
 	Yii::t('app', 'Index'),
 );
 

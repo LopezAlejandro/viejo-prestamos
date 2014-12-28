@@ -1,27 +1,35 @@
 <?php
 $this->breadcrumbs=array(
-	'Copiases'=>array('index'),
+	'Copias'=>array('index'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List Copias', 'url'=>array('index')),
-	array('label'=>'Create Copias', 'url'=>array('create')),
-	array('label'=>'Update Copias', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Copias', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Copias', 'url'=>array('admin')),
+	array('label'=>Yii::t('app','List').' Copias', 'url'=>array('index')),
+	array('label'=>Yii::t('app','Create').' Copias', 'url'=>array('create')),
+	array('label'=>Yii::t('app','Update').' Copias', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>Yii::t('app','Delete').' Copias', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>Yii::t('app','Manage').' Copias', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Copias #<?php echo $model->id; ?></h1>
+<h1>Ver Copias #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'estado.descripcion',
-		'libros.titulo',
 		'nro_copia',
+		array(
+		'name'=>'libros_id',
+		'value'=>$model->libros->titulo,
+		'header'=>'Libro',
+		),
+		array(
+		'name'=>'estado_id',
+		'value'=>$model->estado->descripcion,
+		'header'=>'Estado',
+		),
+		
 	),
 )); ?>
 

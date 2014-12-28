@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('app','List Copias'), 'url'=>array('index')),
-	array('label'=>Yii::t('app','Manage Copias'), 'url'=>array('admin')),
+	array('label'=>Yii::t('app','List').' Copias', 'url'=>array('index')),
+	array('label'=>Yii::t('app','Manage').' Copias', 'url'=>array('admin')),
 );
 ?>
 

@@ -1,7 +1,4 @@
 <?php
-/* @var $this PrestamosController */
-/* @var $model Prestamos */
-
 $this->breadcrumbs=array(
 	'Prestamoses'=>array('index'),
 	$model->id,
@@ -24,7 +21,15 @@ $this->menu=array(
 		'id',
 		'extension',
 		'fecha_devolucion',
-		'lectores_idl',
-		'copias_id',
+		'lectoresIdl.usuario_crea_mod',
+		'copias.nro_copia',
 	),
 )); ?>
+
+
+<br /><h2> This Multas belongs to this Prestamos: </h2>
+<ul><?php foreach($model->multases as $foreignobj) { 
+
+				printf('<li>%s</li>', CHtml::link($foreignobj->fin_multa, array('multas/view', 'id' => $foreignobj->id)));
+
+				} ?></ul>

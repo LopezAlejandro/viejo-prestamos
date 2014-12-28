@@ -1,52 +1,65 @@
-<?php
-/* @var $this PrestamosController */
-/* @var $model Prestamos */
-/* @var $form CActiveForm */
-?>
+<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'prestamos-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
+<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'extension'); ?>
-		<?php echo $form->textField($model,'extension'); ?>
-		<?php echo $form->error($model,'extension'); ?>
+<?php echo $form->checkBox($model,'extension'); ?>
+<?php echo $form->error($model,'extension'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_devolucion'); ?>
-		<?php echo $form->textField($model,'fecha_devolucion'); ?>
-		<?php echo $form->error($model,'fecha_devolucion'); ?>
+<?php $this->widget('zii.widgets.jui.CJuiDatePicker',
+						 array(
+								 'model'=>'$model',
+								 'name'=>'Prestamos[fecha_devolucion]',
+								 //'language'=>'de',
+								 'value'=>$model->fecha_devolucion,
+								 'htmlOptions'=>array('size'=>10, 'style'=>'width:80px !important'),
+									 'options'=>array(
+									 'showButtonPanel'=>true,
+									 'changeYear'=>true,                                      
+									 'changeYear'=>true,
+									 ),
+								 )
+							 );
+					; ?>
+<?php echo $form->error($model,'fecha_devolucion'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'lectores_idl'); ?>
-		<?php echo $form->textField($model,'lectores_idl'); ?>
-		<?php echo $form->error($model,'lectores_idl'); ?>
-	</div>
+			</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'copias_id'); ?>
-		<?php echo $form->textField($model,'copias_id'); ?>
-		<?php echo $form->error($model,'copias_id'); ?>
-	</div>
+			</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
 
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+<label for="Copias">Belonging Copias</label><?php 
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'copias',
+							'fields' => 'nro_copia',
+							'allowEmpty' => false,
+							'style' => 'dropdownlist',
+							)
+						); ?>
+			<label for="Lectores">Belonging Lectores</label><?php 
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'lectoresIdl',
+							'fields' => 'usuario_crea_mod',
+							'allowEmpty' => true,
+							'style' => 'dropdownlist',
+							)
+						); ?>
+			<label for="Multas">Belonging Multas</label><?php 
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'multases',
+							'fields' => 'fin_multa',
+							'allowEmpty' => false,
+							'style' => 'checkbox',
+							)
+						); ?>
+			

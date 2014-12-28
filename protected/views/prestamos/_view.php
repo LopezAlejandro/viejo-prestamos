@@ -1,8 +1,3 @@
-<?php
-/* @var $this PrestamosController */
-/* @var $data Prestamos */
-?>
-
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>

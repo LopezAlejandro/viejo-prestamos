@@ -1,5 +1,12 @@
-<p class="note">Fields with <span class="required">*</span> are required.</p>
+<?php
+/* @var $this CopiasController */
+/* @var $model Copias */
+/* @var $form CActiveForm */
+?>
 
+<div class="form">
+
+<p class="note">Los campos marcados con <span class="required">*</span> son obligatorios.</p>
 <?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -15,7 +22,7 @@
 	</div>
 
 
-<label for="Estado">Belonging Estado</label><?php 
+<label for="Estado">Estado</label><?php 
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'estado',
@@ -24,7 +31,7 @@
 							'style' => 'dropdownlist',
 							)
 						); ?>
-			<label for="Libros">Belonging Libros</label><?php 
+			<label for="Libros">Libros</label><?php 
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'libros',
@@ -33,4 +40,6 @@
 							'style' => 'dropdownlist',
 							)
 						); ?>
+	
 			
+</div>

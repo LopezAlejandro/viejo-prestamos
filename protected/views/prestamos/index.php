@@ -1,14 +1,12 @@
 <?php
-/* @var $this PrestamosController */
-/* @var $dataProvider CActiveDataProvider */
-
-$this->breadcrumbs=array(
+$this->breadcrumbs = array(
 	'Prestamoses',
+	Yii::t('app', 'Index'),
 );
 
 $this->menu=array(
-	array('label'=>'Create Prestamos', 'url'=>array('create')),
-	array('label'=>'Manage Prestamos', 'url'=>array('admin')),
+	array('label'=>Yii::t('app', 'Create') . ' Prestamos', 'url'=>array('create')),
+	array('label'=>Yii::t('app', 'Manage') . ' Prestamos', 'url'=>array('admin')),
 );
 ?>
 

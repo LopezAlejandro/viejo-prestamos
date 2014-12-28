@@ -1,19 +1,19 @@
 <?php
 $this->breadcrumbs=array(
-	'Copiases'=>array('index'),
+	'Copias'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
 	Yii::t('app', 'Update'),
 );
 
 $this->menu=array(
-	array('label'=>'List Copias', 'url'=>array('index')),
-	array('label'=>'Create Copias', 'url'=>array('create')),
-	array('label'=>'View Copias', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Copias', 'url'=>array('admin')),
+	array('label'=>Yii::t('app','List').' Copias', 'url'=>array('index')),
+	array('label'=>Yii::t('app','Create').' Copias', 'url'=>array('create')),
+	array('label'=>Yii::t('app','View').' Copias', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>Yii::t('app','Manage').' Copias', 'url'=>array('admin')),
 );
 ?>
 
-<h1> Update Copias #<?php echo $model->id; ?> </h1>
+<h1> Actualizar Copias #<?php echo $model->id; ?> </h1>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

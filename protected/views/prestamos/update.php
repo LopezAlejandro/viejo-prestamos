@@ -1,11 +1,8 @@
 <?php
-/* @var $this PrestamosController */
-/* @var $model Prestamos */
-
 $this->breadcrumbs=array(
 	'Prestamoses'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	Yii::t('app', 'Update'),
 );
 
 $this->menu=array(
@@ -16,6 +13,22 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Prestamos <?php echo $model->id; ?></h1>
+<h1> Editar Prestamos #<?php echo $model->id; ?> </h1>
+<div class="form">
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'prestamos-form',
+	'enableAjaxValidation'=>true,
+)); 
+echo $this->renderPartial('_form', array(
+	'model'=>$model,
+	'form' =>$form
+	)); ?>
+
+<div class="row buttons">
+	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+</div>
+
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->
